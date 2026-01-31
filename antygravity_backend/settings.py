@@ -30,6 +30,9 @@ SECRET_KEY = env('SECRET_KEY', default='django-insecure-change-me-in-production'
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')
+# Automatically add Render's external hostname
+if 'RENDER_EXTERNAL_HOSTNAME' in os.environ:
+    ALLOWED_HOSTS.append(os.environ['RENDER_EXTERNAL_HOSTNAME'])
 
 # Application definition
 INSTALLED_APPS = [
